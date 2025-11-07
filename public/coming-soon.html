@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coming Soon</title>
+  <style>
+    :root {
+      --bg: #0B0A1A; --text: #E5E7EB; --muted:#A1A1AA; --primary:#A78BFA; --accent:#14B8A6; --border:#1F2937;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+    .wrap { min-height: 100svh; display:grid; place-items:center; padding:2rem; }
+    .card { border:1px solid var(--border); border-radius:1rem; max-width:42rem; width:100%; padding:2rem; background:#121020; }
+    .badge { display:inline-flex; gap:.5rem; align-items:center; font-size:.75rem; padding:.4rem .7rem; border:1px solid var(--border); border-radius:999px; color:var(--primary); background:#1a1830; }
+    a.btn { display:inline-flex; gap:.5rem; align-items:center; padding:.6rem 1rem; border-radius:.75rem; border:1px solid var(--border); color:var(--text); text-decoration:none }
+    a.btn:hover { background:#16142a }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <span class="badge">🚧 Coming Soon</span>
+      <h1 style="margin:1rem 0 .5rem; font-size:2rem;">This page is under construction</h1>
+      <p style="color:var(--muted); margin:0 0 1.25rem;">
+        I’m polishing the live demo. Check back shortly.
+      </p>
+      <a class="btn" href="/" aria-label="Back to portfolio">← Back to portfolio</a>
+    </div>
+  </div>
+</body>
+</html>
