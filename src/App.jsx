@@ -5,7 +5,6 @@ import {
   Globe,
   Mail,
   MapPin,
-  ExternalLink,
   Code2,
   Linkedin,
   Download,
@@ -17,21 +16,25 @@ import {
   ChevronLeft,
   ChevronRight,
   PlayCircle,
-  Menu
+  Menu,
+  Phone
 } from "lucide-react";
+import CV_FILE from "./assets/korantengGraceCV.pdf";
+import exploreGhanaImg from "./assets/exploreGhana.png"
 
 
-// =============== DATA (Edit me) ===================
+// =============== DATA ===================
 const PROFILE = {
   name: "Grace Asantewaa Koranteng",
-  role: "Full‑stack Web Developer",
+  role: "Full-stack Web Developer",
   blurb:
-    "I design, build and ship fast, accessible web apps. I turn fuzzy ideas into clean, production‑ready code.",
+    "I design, build and ship fast, accessible web apps. I turn fuzzy ideas into clean, production-ready code.",
   location: "Accra, Ghana",
   email: "adjoaakoranteng@gmail.com",
+  phone: "+233267743307",
   github: "https://github.com/AdjoaAsantewaa?tab=repositories",
   linkedin: "https://www.linkedin.com/in/grace-asantewaa-koranteng/",
-  portfolioCV: "/cv.pdf", // place your CV at public/cv.pdf
+  portfolioCV:  CV_FILE,
 };
 
 const PROJECTS = [
@@ -41,28 +44,24 @@ const PROJECTS = [
       "Find attractions, food spots, culture and events across Ghana. Save favourites and plan trips.",
     tech: ["React", "Vite", "Tailwind", "Node", "Express", "MongoDB", "JWT", "Vercel"],
     achievements: [
-      "95+ Lighthouse perf; LCP < 2.0s via image optimisation, code‑splitting and caching",
-      "Auth, rate‑limited APIs; 20+ unit tests (Vitest) and Playwright e2e",
-      "CI/CD with GitHub Actions, preview deployments, Sentry error tracking",
+      "Loads quickly on phones (about 2 seconds on 4G).",
+      "Sign up / log in, save favourites, plan trips.",
+      "Auto-deploys from GitHub on Vercel.",
     ],
     live: "/coming-soon.html",
     featured: true,
     media: [
-      // Black, realistic Ghana images
-      { type: "image", src: "https://images.unsplash.com/photo-1545147986-3e7f5fd9ab6b?q=80&w=1400&auto=format&fit=crop" },
-      { type: "image", src: "https://images.unsplash.com/photo-1558980664-10ea1809dede?q=80&w=1400&auto=format&fit=crop" },
-      { type: "youtube", src: "https://www.youtube.com/embed/ysz5S6PUM-U" },
-    ],
+      { type: "image", src: exploreGhanaImg }],
   },
   {
     title: "Business Analytics Dashboard",
     summary:
-      "Role‑based dashboards with charts, server‑side filtering and exports for 100k+ rows.",
+      "Role-based dashboards with charts, server-side filtering and exports for 100k+ rows.",
     tech: ["React", "Recharts", "Node", "Express", "Postgres", "Zod", "JWT"],
     achievements: [
-      "~40% faster TTI via memoisation and lazy‑loading",
-      "Pagination + server‑side filters; CSV export",
-      "Helmet/CSP and input validation for security",
+      "Fast dashboards with filters for large data (100k+ rows).",
+      "Different views for admins and staff.",
+      "Download data as CSV for reports.",
     ],
     live: "/coming-soon.html",
     media: [
@@ -70,14 +69,14 @@ const PROJECTS = [
     ],
   },
   {
-    title: "E‑commerce Storefront",
+    title: "E-commerce Storefront",
     summary:
       "Modern storefront with product catalogue, cart, checkout and admin analytics.",
     tech: ["Next.js", "React", "Tailwind", "Redux Toolkit", "Stripe", "Node"],
     achievements: [
-      "Image optimisation + caching for fast PDPs",
-      "Accessible forms and keyboard nav for checkout",
-      "Ready for SSR/ISR deployment on Vercel",
+      "Browse products, add to cart, pay with Stripe (test mode).",
+      "Simple admin to add or update products and images.",
+      "Mobile-friendly pages that open fast.",
     ],
     live: "/coming-soon.html",
     media: [
@@ -87,27 +86,29 @@ const PROJECTS = [
   {
     title: "Daven Consultants Website",
     summary:
-      "Responsive marketing site with semantic HTML, AA contrast and high‑converting contact form.",
-    tech: ["Tailwind", "Bootstrap", "HTML", "Netlify/Vercel Forms"],
+      "Responsive marketing site with semantic HTML, AA contrast and high-converting contact form.",
+    tech: ["Tailwind", "Bootstrap", "HTML", "JavaScript"],
     achievements: [
-      "100 SEO on Lighthouse; WCAG AA colours",
-      "Spam‑safe forms (hCaptcha) + GA4 events",
+      "Looks great on phones and desktops (responsive).",
+      "Contact form with spam protection and email alerts.",
+      "Clean titles/meta for better Google results.",
     ],
-    live: "#",
+    live: "https://daven-six.vercel.app/",
     media: [
       { type: "image", src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" },
     ],
   },
   {
-    title: "Multipointer Limited Website",
+    title: "Menorah Health LLB",
     summary:
-      "Component‑driven landing + services with crisp visuals and CMS‑ready structure.",
-    tech: ["Tailwind", "JavaScript", "HTML"],
+      "Component-driven landing + services with crisp visuals and CMS-ready structure.",
+    tech: ["Tailwind", "React", "HTML"],
     achievements: [
-      "CLS < 0.05 via careful layout + responsive images",
-      "Automated image pipeline to modern formats",
+      "Reusable sections for services and FAQs.",
+      "Optimised images for smooth loading.",
+      "Stable layout that doesn’t jump while loading.",
     ],
-    live: "#",
+    live: "https://menorah-4mqn.vercel.app/",
     media: [
       { type: "image", src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" },
     ],
@@ -121,50 +122,46 @@ const SKILLS = {
   "Mobile Apps": ["React Native", "Expo", "Expo Router", "Redux Toolkit"],
   Backend: ["Node", "Express", "REST", "Postgres", "MongoDB", "Prisma", "Auth (JWT)"],
   "DevOps & Tools": ["GitHub Actions", "Docker", "Vercel", "Netlify", "Sentry", "GA4"],
-  "Testing & Quality": ["Vitest", "Playwright", "ESLint", "Prettier", "Lighthouse", "axe"],
 };
 
 // =============== Theme System ===================
 const THEMES = {
-  // aurora: {
-  //   label: "Aurora Neon",
-  //   light: { bg: "#F8FAFC", surface: "#FFFFFF", text: "#0B1220", muted: "#64748B", primary: "#7C3AED", accent: "#22D3EE", border: "#E5E7EB", ring: "#7C3AED" },
-  //   dark: { bg: "#0B1220", surface: "#0F172A", text: "#E5E7EB", muted: "#94A3B8", primary: "#A78BFA", accent: "#22D3EE", border: "#1E293B", ring: "#A78BFA" },
-  // },
-  // jade: {
-  //   label: "Jade & Ink",
-  //   light: { bg: "#F6F9F8", surface: "#FFFFFF", text: "#091016", muted: "#5B6B73", primary: "#0EA5A0", accent: "#F59E0B", border: "#E2E8F0", ring: "#0EA5A0" },
-  //   dark: { bg: "#081317", surface: "#0B1B1E", text: "#E6F1F1", muted: "#92A8AD", primary: "#14B8A6", accent: "#F59E0B", border: "#123037", ring: "#14B8A6" },
-  // },
-  // royal: {
-  //   label: "Royal Signal",
-  //   light: { bg: "#FAFBFF", surface: "#FFFFFF", text: "#0B0A13", muted: "#636576", primary: "#4F46E5", accent: "#EC4899", border: "#E6E8EF", ring: "#4F46E5" },
-  //   dark: { bg: "#0C0B14", surface: "#10111D", text: "#E6E7F1", muted: "#A1A1B3", primary: "#818CF8", accent: "#F472B6", border: "#1C1E2E", ring: "#818CF8" },
-  // },
-  // plumTeal: {
-  //   label: "Plum & Teal",
-  //   light: { bg: "#F9FAFB", surface: "#FFFFFF", text: "#0C0A1A", muted: "#6B7280", primary: "#6D28D9", accent: "#14B8A6", border: "#E5E7EB", ring: "#6D28D9" },
-  //   dark: { bg: "#0B0A1A", surface: "#121020", text: "#E5E7EB", muted: "#A1A1AA", primary: "#A78BFA", accent: "#14B8A6", border: "#1F2937", ring: "#A78BFA" },
-  // },
   rose: {
     label: "Rose Quartz",
     light: { bg: "#FFF8FB", surface: "#FFFFFF", text: "#19151F", muted: "#7A7282", primary: "#DB2777", accent: "#A78BFA", border: "#F1E6EE", ring: "#DB2777" },
-    dark: { bg: "#120F16", surface: "#181320", text: "#F3E8EE", muted: "#B7AABB", primary: "#F472B6", accent: "#C4B5FD", border: "#2A2330", ring: "#F472B6" },
+    dark:  { bg: "#120F16", surface: "#181320", text: "#F3E8EE", muted: "#B7AABB", primary: "#F472B6", accent: "#C4B5FD", border: "#2A2330", ring: "#F472B6" },
+  },
+  plumTeal: {
+    label: "Plum & Teal",
+    light: { bg:"#F9FAFB", surface:"#FFFFFF", text:"#0C0A1A", muted:"#6B7280", primary:"#6D28D9", accent:"#14B8A6", border:"#E5E7EB", ring:"#A78BFA" },
+    dark:  { bg:"#0B0A1A", surface:"#121020", text:"#E5E7EB", muted:"#A1A1AA", primary:"#A78BFA", accent:"#14B8A6", border:"#1F2937", ring:"#A78BFA" },
   },
 };
+
 function applyTheme(theme, mode) {
   const scheme = theme[mode];
-  Object.entries(scheme).forEach(([k, v]) => document.documentElement.style.setProperty(`--${k}`, v));
+  Object.entries(scheme).forEach(([k, v]) =>
+    document.documentElement.style.setProperty(`--${k}`, v)
+  );
 }
+
 function ThemeSwitcher({ themeKey, setThemeKey, mode, setMode }) {
   const keys = Object.keys(THEMES);
   const next = () => setThemeKey(keys[(keys.indexOf(themeKey) + 1) % keys.length]);
   return (
     <div className="flex items-center gap-2">
-      <button onClick={() => setMode(mode === "light" ? "dark" : "light")} className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-3 py-2 text-sm hover:bg-(--surface)/60" aria-label="Toggle color mode">
+      <button
+        onClick={() => setMode(mode === "light" ? "dark" : "light")}
+        className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-3 py-2 text-sm hover:bg-(--surface)/60"
+        aria-label="Toggle color mode"
+      >
         {mode === "light" ? <Moon size={16} /> : <Sun size={16} />} {mode === "light" ? "Dark" : "Light"}
       </button>
-      <button onClick={next} className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-3 py-2 text-sm hover:bg-(--surface)/60" aria-label="Cycle palette">
+      <button
+        onClick={next}
+        className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-3 py-2 text-sm hover:bg-(--surface)/60"
+        aria-label="Cycle palette"
+      >
         <Palette size={16} /> {THEMES[themeKey].label}
       </button>
     </div>
@@ -182,7 +179,8 @@ const Section = ({ id, title, children }) => (
 );
 
 const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border border-(--border) px-3 py-1 text-xs md:text-sm mr-2 mb-2">
+  <span className="inline-flex items-center rounded-full border border-(--border)
+                   bg-(--primary)/10 text-(--primary) px-3 py-1 text-xs md:text-sm mr-2 mb-2">
     {children}
   </span>
 );
@@ -204,8 +202,15 @@ function MediaThumb({ item, onClick }) {
     <button onClick={onClick} className="group relative block w-full overflow-hidden rounded-xl border border-(--border)">
       <div className="aspect-video bg-black/10">
         {item.type === "image" ? (
-          <img src={item.src} alt="" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
-        ) : (
+  <img
+    src={item.src}
+    alt=""
+    className={
+      "h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02] " +
+      (item.className || "")
+    }
+  />
+): (
           <div className="flex h-full w-full items-center justify-center">
             <PlayCircle size={56} className="opacity-80 group-hover:opacity-100" />
           </div>
@@ -257,8 +262,8 @@ function Lightbox({ items, index, onClose, onPrev, onNext }) {
 
 // =============== Main Component ===================
 export default function PortfolioApp() {
-  const [themeKey, setThemeKey] = useState("rose");
-  const [mode, setMode] = useState("dark");
+  const [themeKey, setThemeKey] = useState("rose"); // default palette
+  const [mode, setMode] = useState("dark");             // default dark mode
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Lightbox state
@@ -272,9 +277,19 @@ export default function PortfolioApp() {
     document.body.style.overflow = lightbox.open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [lightbox.open]);
+
   useEffect(() => { applyTheme(THEMES[themeKey], mode); }, [themeKey, mode]);
+
   return (
     <div className="min-h-screen bg-(--bg) text-(--text) selection:bg-(--primary) selection:text-white">
+      {/* Animated hero glow */}
+      <motion.div
+        className="pointer-events-none fixed -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full
+                   bg-[conic-gradient(from_0deg,_var(--primary),_var(--accent),_transparent_70%)] blur-3xl opacity-25"
+        animate={{ rotate: [0, 180, 360] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      />
+
       {/* Sticky Nav */}
       <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-(--surface)/60 border-b border-(--border)">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -288,7 +303,7 @@ export default function PortfolioApp() {
               { href: "#about", label: "About" },
               { href: "#contact", label: "Contact" },
             ].map((link) => (
-              <a key={link.href} href={link.href} className="hover:opacity-70">
+              <a key={link.href} href={link.href} className="hover:opacity-80 hover:text-(--primary) transition">
                 {link.label}
               </a>
             ))}
@@ -337,10 +352,11 @@ export default function PortfolioApp() {
                   {link.label}
                 </a>
               ))}
-              <div className="flex items-center gap-2 pt-2">
+              <div className="flex flex-wrap items-center gap-2 pt-2">
                 <a href={PROFILE.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-(--surface)/60"><Github size={16}/> GitHub</a>
                 <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-(--surface)/60"><Linkedin size={16}/> LinkedIn</a>
                 <a href={`mailto:${PROFILE.email}`} className="inline-flex items-center gap-2 px-2 py-2 rounded-lg bg-(--primary) text-white"><Mail size={16}/> Email</a>
+                <a href={`tel:${PROFILE.phone}`} className="inline-flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-(--surface)/60"><Phone size={16}/> Call</a>
               </div>
             </nav>
           </div>
@@ -349,7 +365,8 @@ export default function PortfolioApp() {
 
       {/* Hero */}
       <section id="home" className="relative">
-        <div className="absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-[radial-gradient(900px_500px_at_10%_-10%,_var(--accent)_10%,_transparent_60%),radial-gradient(800px_500px_at_90%_0%,_var(--primary)_10%,_transparent_60%),linear-gradient(to_bottom,transparent,transparent)] opacity-30" />
+        <div className="absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]
+                        bg-[radial-gradient(900px_500px_at_10%_-10%,_var(--accent)_10%,_transparent_60%),radial-gradient(800px_500px_at_90%_0%,_var(--primary)_10%,_transparent_60%),linear-gradient(to_bottom,transparent,transparent)] opacity-30" />
         <div className="max-w-6xl mx-auto px-4 py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -361,10 +378,10 @@ export default function PortfolioApp() {
               <p className="inline-flex items-center gap-2 text-sm text-(--muted) mb-4">
                 <MapPin size={16} className="opacity-70" /> {PROFILE.location}
               </p>
-              <span className="inline-flex items-center gap-2 text-xs font-medium px-2.5 py-1.5 rounded-full border border-(--border) text-(--primary) bg-(--surface)/60 mb-3">
-                <Sparkles size={14} /> Frontend‑first Full‑Stack
+              <span className="inline-flex items-center gap-2 text-xs font-medium px-2.5 py-1.5 rounded-full border border-(--border) text-(--primary) bg-(--surface)/60 mb-3 animate-[pulse_2.5s_ease-in-out_infinite]">
+                <Sparkles size={14} /> Frontend-first Full-Stack
               </span>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight bg-gradient-to-r from-(--primary) to-(--accent) bg-clip-text text-transparent">
                 {PROFILE.role}
               </h1>
               <p className="mt-4 text-(--muted) max-w-prose">
@@ -381,13 +398,19 @@ export default function PortfolioApp() {
                   href={`mailto:${PROFILE.email}`}
                   className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-4 py-2"
                 >
-                  <Mail size={16} /> Contact
+                  <Mail size={16} /> Email
+                </a>
+                <a
+                  href={`tel:${PROFILE.phone}`}
+                  className="inline-flex items-center gap-2 rounded-xl border border-(--border) px-4 py-2"
+                >
+                  <Phone size={16} /> Call
                 </a>
                 <ThemeSwitcher themeKey={themeKey} setThemeKey={setThemeKey} mode={mode} setMode={setMode} />
               </div>
             </div>
             <div className="md:justify-self-end">
-              {/* Simple showcase tile */}
+              {/* Simple showcase tiles */}
               <div className="grid grid-cols-2 gap-4">
                 {PROJECTS.slice(0, 2).map((p) => (
                   <a
@@ -418,9 +441,12 @@ export default function PortfolioApp() {
               key={proj.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="rounded-2xl border border-(--border) p-6 bg-(--surface) hover:shadow-md transition"
+              transition={{ duration: 0.35 }}
+              className="rounded-2xl border border-(--border) p-6 bg-(--surface)
+                         hover:border-(--ring) hover:shadow-[0_12px_40px_rgb(0_0_0_/_0.25)]
+                         transition"
             >
               {proj.media?.length ? (
                 <div className="mb-4">
@@ -434,7 +460,8 @@ export default function PortfolioApp() {
                     href={proj.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-sm hover:underline"
+                    className="inline-flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg
+                               bg-gradient-to-r from-(--primary) to-(--accent) text-white hover:opacity-95"
                   >
                     <Globe size={16} /> Live
                   </a>
@@ -479,8 +506,8 @@ export default function PortfolioApp() {
       <Section id="about" title="About">
         <div className="rounded-2xl border border-(--border) p-6 bg-(--surface)">
           <p className="text-(--muted) leading-relaxed">
-            I craft user‑centred, performant web applications with a focus on accessibility and clean architecture.
-            Over the past year I’ve built dashboards, content sites and location‑aware apps, shipping CI/CD pipelines
+            I craft user-centred, performant web applications with a focus on accessibility and clean architecture.
+            Over the past year I’ve built dashboards, content sites and location-aware apps, shipping CI/CD pipelines
             and testing along the way. I care about details: meaningful metrics (Core Web Vitals), semantic HTML and
             straightforward docs so teams can scale and maintain work with confidence.
           </p>
@@ -492,6 +519,7 @@ export default function PortfolioApp() {
         <div className="rounded-2xl border border-(--border) p-6 bg-(--surface)">
           <div className="flex flex-wrap items-center gap-3">
             <LinkIcon href={`mailto:${PROFILE.email}`} Icon={Mail}>Email</LinkIcon>
+            <LinkIcon href={`tel:${PROFILE.phone}`} Icon={Phone}>Call</LinkIcon>
             <LinkIcon href={PROFILE.github} Icon={Github}>GitHub</LinkIcon>
             <LinkIcon href={PROFILE.linkedin} Icon={Linkedin}>LinkedIn</LinkIcon>
           </div>
@@ -517,6 +545,7 @@ export default function PortfolioApp() {
           </div>
         </div>
       </footer>
+
       {lightbox.open && (
         <Lightbox items={lightbox.items} index={lightbox.index} onClose={closeLightbox} onPrev={prevLightbox} onNext={nextLightbox} />
       )}
