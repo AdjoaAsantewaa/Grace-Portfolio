@@ -20,7 +20,11 @@ import {
   Phone
 } from "lucide-react";
 import CV_FILE from "./assets/korantengGraceCV.pdf";
-import exploreGhanaImg from "./assets/exploreGhana.png"
+import exploreGhanaImg from "./assets/exploreGh.png";
+import businessAnalytics from "./assets/businessAna.png";
+import ecommerce from "./assets/e-commerce.png";
+import webDev from "./assets/webDev.png";
+import webDev2 from "./assets/menorah.png";
 
 
 // =============== DATA ===================
@@ -65,7 +69,7 @@ const PROJECTS = [
     ],
     live: "/coming-soon.html",
     media: [
-      { type: "image", src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1400&auto=format&fit=crop" },
+      { type: "image", src: businessAnalytics },
     ],
   },
   {
@@ -80,11 +84,11 @@ const PROJECTS = [
     ],
     live: "/coming-soon.html",
     media: [
-      { type: "image", src: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1400&auto=format&fit=crop" },
-    ],
+        { type: "image", src: ecommerce },
+      ],
   },
   {
-    title: "Daven Consultants Website",
+    title: "Frimsa Foods Website",
     summary:
       "Responsive marketing site with semantic HTML, AA contrast and high-converting contact form.",
     tech: ["Tailwind", "Bootstrap", "HTML", "JavaScript"],
@@ -93,34 +97,35 @@ const PROJECTS = [
       "Contact form with spam protection and email alerts.",
       "Clean titles/meta for better Google results.",
     ],
-    live: "https://daven-six.vercel.app/",
+    live: "https://www.frimsafoodsgh.com/",
     media: [
-      { type: "image", src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" },
+      { type: "image", src: webDev },
     ],
   },
-  {
-    title: "Menorah Health LLB",
-    summary:
-      "Component-driven landing + services with crisp visuals and CMS-ready structure.",
-    tech: ["Tailwind", "React", "HTML"],
-    achievements: [
-      "Reusable sections for services and FAQs.",
-      "Optimised images for smooth loading.",
-      "Stable layout that doesn’t jump while loading.",
-    ],
-    live: "https://menorah-4mqn.vercel.app/",
-    media: [
-      { type: "image", src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" },
-    ],
-  },
+ {
+  title: "Menorah Health LLB",
+  summary:
+    "Component-driven landing + services with crisp visuals and CMS-ready structure.",
+  tech: ["Tailwind", "React", "HTML"],
+  achievements: [
+    "Reusable sections for services, FAQs and testimonials.",
+    "Simple registration forms that work smoothly on both phones and laptops.",
+    "PayPal-powered payments for quick, secure registrations and donations.",
+  ],
+  live: "https://menorah-4mqn.vercel.app/",
+  media: [
+    { type: "image", src: webDev2},  // 👈 use your new UI/banner image here
+  ],
+},
+
 ];
 
 const SKILLS = {
   Frontend: [
-    "React", "Next.js", "Vite", "TypeScript", "Tailwind", "Redux Toolkit", "Framer Motion",
+    "React", "Next.js", "Vite", "Tailwind", "Redux Toolkit", "Framer Motion",
   ],
   "Mobile Apps": ["React Native", "Expo", "Expo Router", "Redux Toolkit"],
-  Backend: ["Node", "Express", "REST", "Postgres", "MongoDB", "Prisma", "Auth (JWT)"],
+  Backend: ["Node", "Express", "REST", "Postgres", "MongoDB", "Auth (JWT)"],
   "DevOps & Tools": ["GitHub Actions", "Docker", "Vercel", "Netlify", "Sentry", "GA4"],
 };
 
@@ -503,16 +508,27 @@ export default function PortfolioApp() {
       </Section>
 
       {/* About */}
-      <Section id="about" title="About">
-        <div className="rounded-2xl border border-(--border) p-6 bg-(--surface)">
-          <p className="text-(--muted) leading-relaxed">
-            I craft user-centred, performant web applications with a focus on accessibility and clean architecture.
-            Over the past year I’ve built dashboards, content sites and location-aware apps, shipping CI/CD pipelines
-            and testing along the way. I care about details: meaningful metrics (Core Web Vitals), semantic HTML and
-            straightforward docs so teams can scale and maintain work with confidence.
-          </p>
-        </div>
-      </Section>
+     <Section id="about" title="About">
+  <div className="rounded-2xl border border-(--border) p-6 bg-(--surface)">
+    <div className="space-y-3 text-(--muted) leading-relaxed">
+      <p>
+        I’m a full-stack web developer who enjoys turning fuzzy ideas into clear,
+        easy-to-use products. I care about fast load times, accessible layouts and
+        clean architecture so that sites feel smooth for users and stay simple for
+        teams to maintain.
+      </p>
+      <p>
+        I’ve built real-world projects across construction, agribusiness,
+        consulting and health – from marketing sites and landing pages to
+        dashboards and booking flows. On each project I focus on the details:
+        thoughtful content structure, responsive design, meaningful metrics and
+        straightforward docs so your team can grow the product with confidence.
+      </p>
+    </div>
+  </div>
+</Section>
+
+
 
       {/* Contact */}
       <Section id="contact" title="Contact">
