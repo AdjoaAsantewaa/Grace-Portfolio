@@ -112,7 +112,7 @@ const PROJECTS = [
     "Simple registration forms that work smoothly on both phones and laptops.",
     "PayPal-powered payments for quick, secure registrations and donations.",
   ],
-  live: "https://menorah-4mqn.vercel.app/",
+  live: "https://www.menorahhealth.org/",
   media: [
     { type: "image", src: webDev2},  // 👈 use your new UI/banner image here
   ],
@@ -264,24 +264,84 @@ function Lightbox({ items, index, onClose, onPrev, onNext }) {
     </motion.div>
   );
 }
+function Preloader() {
+  return (
+    <div className="min-h-screen bg-(--bg) text-(--text) flex items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col items-center gap-5"
+      >
+        {/* Logo cube */}
+        <div className="relative">
+          <motion.div
+            className="h-16 w-16 rounded-3xl bg-gradient-to-tr from-(--primary) to-(--accent) blur-[1px]"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: "linear" }}
+          />
+          <div className="absolute inset-1 rounded-3xl bg-(--surface) flex items-center justify-center border border-(--border)">
+            <Code2 className="text-(--primary)" size={26} />
+          </div>
+        </div>
+
+        {/* Text */}
+        <div className="text-center space-y-1">
+          <p className="text-xs uppercase tracking-[0.3em] text-(--muted)">
+            Loading portfolio
+          </p>
+          <p className="text-sm text-(--muted)">
+            Crafting experience for you…
+          </p>
+        </div>
+
+        {/* Animated bars */}
+        <motion.div className="flex gap-1.5 mt-1">
+          {[0, 1, 2].map((i) => (
+            <motion.span
+              key={i}
+              className="h-1.5 w-5 rounded-full bg-(--primary)"
+              animate={{ opacity: [0.2, 1, 0.2], y: [0, -4, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 0.9,
+                delay: i * 0.15,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
 
 // =============== Main Component ===================
 export default function PortfolioApp() {
   const [themeKey, setThemeKey] = useState("rose"); // default palette
   const [mode, setMode] = useState("dark");             // default dark mode
   const [mobileOpen, setMobileOpen] = useState(false);
-
+  
   // Lightbox state
   const [lightbox, setLightbox] = useState({ open: false, items: [], index: 0 });
   const openLightbox = (items, index = 0) => setLightbox({ open: true, items, index });
   const closeLightbox = () => setLightbox((s) => ({ ...s, open: false }));
   const nextLightbox = () => setLightbox((s) => ({ ...s, index: (s.index + 1) % s.items.length }));
   const prevLightbox = () => setLightbox((s) => ({ ...s, index: (s.index - 1 + s.items.length) % s.items.length }));
+  
+  const [isLoading, setIsLoading] = useState(true);
+   useEffect(() => {
+  const timer = setTimeout(() => setIsLoading(false), 1500); // 1.5s splash
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = lightbox.open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [lightbox.open]);
+
+   
 
   useEffect(() => { applyTheme(THEMES[themeKey], mode); }, [themeKey, mode]);
 
